@@ -1,0 +1,9 @@
+infra/logs/rabbitmq/*
+!infra/logs/rabbitmq/.gitkeep
+infra/queue/*
+!infra/queue/.gitkeep
+backend
+!backend/.gitkeep
+frontend
+!frontend/.gitkeep
+infra/database/*
