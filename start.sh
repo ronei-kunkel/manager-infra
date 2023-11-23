@@ -63,7 +63,7 @@ fi
 if [ "$(docker ps -q -f name=ish_node)" ]; then
   echo ""
 else
-  docker run --rm -d -v $(pwd)/frontend:/manager/frontend -w /manager/frontend --network ish_internal --name ish_node -p 80:3000 -it --entrypoint sh node:21-alpine -c "npm install && npm run build && npm run generate && npm run start"
+  docker run --rm -d -v $(pwd)/frontend:/manager/frontend -w /manager/frontend --network ish_internal --name ish_node -p 80:3000 -it --entrypoint sh node:21-alpine -c "yarn deploy"
   echo ""
 fi
 
@@ -105,4 +105,7 @@ echo ""
 
 
 ## NODE 21.2 - dev
-# docker run --rm -v $(pwd):/frontend/manager -w /frontend/manager --network ish_internal --name ish_node -p 80:3000 -it --entrypoint sh node:21-alpine -c "npm run dev"
+# docker run --rm -v $(pwd):/frontend/manager -w /frontend/manager --network ish_internal --name ish_node -p 80:3000 -it --entrypoint sh node:21-alpine -c "yarn run dev"
+
+## NODE BUILD LOCAL
+# docker run --rm -v $(pwd)/frontend:/manager/frontend -w /manager/frontend --network ish_internal --name ish_node -p 80:3000 -it --entrypoint sh node:21-alpine -c "yarn install && yarn run build && yarn run generate"
